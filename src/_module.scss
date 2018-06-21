@@ -1,0 +1,245 @@
+/*------------------------------------------------------------------------------------
+基本変数
+------------------------------------------------------------------------------------*/
+$max-width: 980px;
+$blue-base: #2092DB;
+
+// Tokyo
+$cl-musician: #009E9F;
+$cl-performance: #00B3CD;
+$cl-sound: #425AA7;
+$cl-artist_staff: #EF7E20;
+$cl-concert_staff: #E50020;
+$cl-music_synthesis: #FBBF00;
+$cl-guitar: #43B049;
+$cl-piano: #E85288;
+$cl-wind_instrument: #C0599D;
+
+// Osaka
+$cl-osaka-music_artists: #009FA2;
+$cl-osaka-voice_actor: #F06196;
+$cl-osaka-staff: #05B8A3;
+
+// fukuoka
+$cl-fukuoka: #6eba44;
+
+
+// 2017改定
+// Tokyo
+$cl-tokyo-artists:#338AD0;
+$cl-tokyo-staff:#E50011;
+$cl-tokyo-instrument:#45B035;
+
+// Osaka
+$cl-osaka-artists: #ED1D2F;
+$cl-osaka-mi: #716F6E;
+$cl-osaka-voice_acting: #F06295;
+$cl-osaka-entertainment-staff: #436A94;
+
+// fukuoka
+$cl-fukuoka-artists: #05B8A3;
+$cl-fukuoka-voice_acting: #F37996;
+$cl-fukuoka-entertainment-staff: #ED1C2F;
+
+/*------------------------------------------------------------------------------------
+htmlタグに「sp-contents」が付くときにスマホ用CSS適用
+------------------------------------------------------------------------------------*/
+@mixin create-context($classes...) {
+	@each $class in $classes {
+		.#{$class} & {
+			@content;
+		}
+	}
+}
+
+// スマホのとき
+@mixin sp-tmpl {
+	@include create-context(sp-contents) {
+		@content;
+	}
+}
+
+// pcのとき
+@mixin pc-tmpl {
+	@include create-context(pc-contents) {
+		@content;
+	}
+}
+
+/*------------------------------------------------------------------------------------
+グラデーション
+------------------------------------------------------------------------------------*/
+@mixin gradient($start-color, $end-color, $orientation)
+{
+	background: $start-color;
+	@if $orientation == vertical
+	{
+		// vertical
+		background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color));
+		background: -webkit-linear-gradient(top,  $start-color 0%,$end-color 100%);
+		background: -o-linear-gradient(top,  $start-color 0%,$end-color 100%);
+		background: -ms-linear-gradient(top,  $start-color 0%,$end-color 100%);
+		background: linear-gradient(to bottom,  $start-color 0%,$end-color 100%);
+		//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start-color}', endColorstr='#{$end-color}',GradientType=0 );
+	}
+	@else if $orientation == horizontal
+	{
+		// horizontal
+		background: -moz-linear-gradient(left,  $start-color 0%, $end-color 100%);
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,$start-color), color-stop(100%,$end-color));
+		background: -webkit-linear-gradient(left,  $start-color 0%,$end-color 100%);
+		background: -o-linear-gradient(left,  $start-color 0%,$end-color 100%);
+		background: -ms-linear-gradient(left,  $start-color 0%,$end-color 100%);
+		background: linear-gradient(to right,  $start-color 0%,$end-color 100%);
+		//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start-color}', endColorstr='#{$end-color}',GradientType=1 );
+	}
+	@else
+	{
+		// radial
+		background: -moz-radial-gradient(center, ellipse cover,  $start-color 0%, $end-color 100%);
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$start-color), color-stop(100%,$end-color));
+		background: -webkit-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+		background: -o-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+		background: -ms-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+		background: radial-gradient(ellipse at center,  $start-color 0%,$end-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+	}
+}
+
+/*------------------------------------------------------------------------------------
+背景画像置換
+------------------------------------------------------------------------------------*/
+@mixin bgreplace {
+	display: block;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+//背景画像置換解除
+@mixin bgreplaceclear {
+	text-indent: inherit;
+	white-space: inherit;
+	overflow: inherit;
+	width: auto;
+	height: auto;
+	background: none;
+}
+
+/*------------------------------------------------------------------------------------
+clearfix
+------------------------------------------------------------------------------------*/
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+		height: 0;
+		visibility: hidden;
+	}
+}
+
+
+/*------------------------------------------------------------------------------------
+inline-block center
+------------------------------------------------------------------------------------*/
+@mixin inlineCenter($margin-left: 20px) {
+	margin: 0 0 0 (-$margin-left);
+	padding: 0;
+	text-align: center;
+	letter-spacing: -.4em;
+
+	li {
+		display: inline-block;
+		letter-spacing: normal;
+		margin-left: $margin-left;
+	}
+}
+
+
+/*------------------------------------------------------------------------------------
+リンクの＞矢印
+------------------------------------------------------------------------------------*/
+@mixin spnavarrow($arrowcolor) {
+	position: relative;
+	padding-right: 25px;
+
+	&:after {
+		display: block;
+		position: absolute;
+		top: 50%;
+		right: 12px;
+		width: 7px;
+		height: 7px;
+		margin-top: -4px;
+		border-top: solid 2px $arrowcolor;
+		border-right: solid 2px $arrowcolor;
+		-webkit-transform: rotate(45deg);
+		transform: rotate(45deg);
+		content: "";
+	}
+}
+
+
+
+/*------------------------------------------------------------------------------------
+link-btn
+------------------------------------------------------------------------------------*/
+@mixin link_btn($width: 194px, $txt_color: #fff, $bg_color: $blue-base) {
+	box-sizing: border-box;
+	display: inline-block;
+	min-width: $width;
+	padding: 15px 10px;
+	color: $txt_color;
+	text-align: center;
+	font-weight: bold;
+	background-color: $bg_color;
+	border-radius: 10px;
+	text-decoration: none;
+
+	&:hover {
+		opacity: .8;
+	}
+}
+
+
+/*------------------------------------------------------------------------------------
+hs1_2用
+------------------------------------------------------------------------------------*/
+@mixin maxWidth($top: 0, $bottom: 0) {
+	max-width: $width-max;
+	@include mq-max {
+		margin: $top auto $bottom;
+	}
+}
+
+@mixin btn($color) {
+	display: inline-block;
+	min-width: 218px;
+	padding: 15px 30px;
+	border-radius: 30px;
+	background-color: $color;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	font-size: 1.6rem;
+
+	@include mq-sp {
+		min-width: 180px;
+	}
+
+	&:hover {
+		color: #fff;
+		opacity: 0.8;
+	}
+}
+
+@mixin courseTitle($color) {
+	font-size: 2.4rem;
+	color: $color;
+
+	@include mq-sp {
+		font-size: 2.0rem;
+	}
+}
