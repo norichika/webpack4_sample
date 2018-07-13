@@ -108,11 +108,11 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /*!*************************!*\
   !*** ./src/js/app01.js ***!
   \*************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n\n//\nconsole.log(lodash__WEBPACK_IMPORTED_MODULE_0___default.a);\nconsole.log(\"aaaaa\");\n\n//# sourceURL=webpack:///./src/js/app01.js?");
+eval("\n\nvar _lodash = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n\nvar _lodash2 = _interopRequireDefault(_lodash);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//\nconsole.log(_lodash2.default);\nconsole.log(\"aaaaa\");\n\n//# sourceURL=webpack:///./src/js/app01.js?");
 
 /***/ })
 

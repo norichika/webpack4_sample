@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const glob = require('glob-all');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 //sourceファイル
 const sourcePath = "./src";
 
@@ -60,7 +60,45 @@ module.exports = {
         ],
         // node_modules は除外する
         exclude: /node_modules/,
+      },
+      {
+        test: /\.ejs$/,
+        use: 'ejs-compiled-loader'
+      },
+
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]?[hash]',
+              context: 'src'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              }
+            }
+          },
+        ],
       }
+
     ]
   },
 
@@ -70,6 +108,13 @@ module.exports = {
       chunks: 'initial',
       minChunks: 2,
     }
-  }
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: './index.html',
+      template: './src/index.ejs'
+    })
+  ],
 
 };

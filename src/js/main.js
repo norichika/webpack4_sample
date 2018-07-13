@@ -1,10 +1,15 @@
 // import _ from 'lodash';
 import Utils from './_sub';
 import {BreakPoint} from '../_util/Breakpoint';
+import sum from "./sum";
+import fetchCurrentUser from './fetchCurrentUser';
 
 Utils.method1();
 Utils.method2();
 Utils.method2();
+
+console.log(sum(1,2));
+fetchCurrentUser(dummyCallback);
 
 // timer(5000);
 // console.log(_);
@@ -15,6 +20,8 @@ console.log("aaaaaa");
 console.log("aaaaaa");
 
 timer(5000);
+
+function dummyCallback() {}
 
 function timer(delay) {
 	let myFirstPromise = new Promise((resolve, reject) => {

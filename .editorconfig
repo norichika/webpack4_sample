@@ -5,6 +5,8 @@ root = true
 end_of_line = lf
 # 最終行に改行を追加する
 insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
 
 [*.php]
 # インデントスタイル：タブ文字
@@ -12,5 +14,15 @@ indent_style = tab
 
 [*.js]
 # インデントスタイル：2スペース
+indent_style = space
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[**.std]
+insert_final_newline = false
+
+[{package,bower}.json]
 indent_style = space
 indent_size = 2
