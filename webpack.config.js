@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const glob = require('glob-all');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 //sourceファイル
